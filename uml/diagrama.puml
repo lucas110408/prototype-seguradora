@@ -1,0 +1,34 @@
+@startuml
+skinparam monochrome true
+skinparam style strictuml
+skinparam classBackgroundColor White
+skinparam backgroundColor White
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+
+interface Cloneable <<interface>> {
+}
+
+class Apolice {
+  - numero : String
+  - nomeSegurado : String
+  - veiculo : Veiculo
+  - cidade : String
+  + clone() : Apolice
+}
+
+class Veiculo {
+  - modelo : String
+  - ano : Integer
+  + clone() : Object
+}
+
+class CloneNotSupportedException {
+}
+
+Cloneable <|.. Apolice
+Cloneable <|.. Veiculo
+Apolice --> "1" Veiculo
+Apolice ..> CloneNotSupportedException
+Veiculo ..> CloneNotSupportedException
+@enduml
